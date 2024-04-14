@@ -69,7 +69,7 @@ function renderBook(book) {
       <div class="description">${description}</div>
       <button class="removeBtn">Remove from cart</button>
     </div>
-    <div class="quantity">${quantity}
+    <div class="quantity">${quantity} @ $${price.toFixed(2)}</div>
     <div class="price">$${totalPrice.toFixed(2)}</div>
   </div>
   `;
@@ -91,6 +91,7 @@ function calculateTotal() {
   The books should be rendered in the `section` with id "cartItems".
   The total should be rendered in the `section` with id "cartTotal".
 */
+
 function render() {
   const cartItems = document.getElementById('cartItems');
   const cartTotal = document.querySelector('.total-price');
@@ -115,7 +116,15 @@ function sortByPrice() {
   Perform all startup tasks here. Use this function to attach the required event listeners
   then call `render()`.
 */
-function main() {}
+function main() {
+  const sortBtn = document.getElementById('sortBtn');
+  sortBtn.addEventListener('click', () => {
+    sortByPrice();
+    render();
+  })
+  render();
+}
+
 
 window.addEventListener("DOMContentLoaded", main);
 
