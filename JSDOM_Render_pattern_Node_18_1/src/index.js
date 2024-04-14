@@ -83,7 +83,7 @@ function calculateTotal() {
   for (const book of books) {
     total += book.price * book.quantity;
   }
-  return total.toFixed(2);
+  return Number(total.toFixed(2));
 }
 
 /*
