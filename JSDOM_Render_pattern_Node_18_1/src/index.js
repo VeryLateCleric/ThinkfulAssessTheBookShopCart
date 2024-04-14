@@ -62,7 +62,17 @@ function renderBook(book) {
   const totalPrice = price * quantity;
 
   return `
-  `
+  <div class="book">
+    <div class="details">
+      <div class="title">${title} <span class="rating">(${rating} stars)</span></div>
+      <div class="authors">by ${authors.join(', ')}</div>
+      <div class="description">${description}</div>
+      <button class="removeBtn">Remove from cart</button>
+    </div>
+    <div class="quantity">${quantity}
+    <div class="price">$${totalPrice.toFixed(2)}</div>
+  </div>
+  `;
 }
 
 /*
@@ -81,12 +91,25 @@ function calculateTotal() {
   The books should be rendered in the `section` with id "cartItems".
   The total should be rendered in the `section` with id "cartTotal".
 */
-function render() {}
+function render() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.querySelector('.total-price');
+
+  if (books.length === 0) {
+    cartItems.innerHTML = 'Nothing in cart';
+  } else {
+    cartItems.innerHTML = books.map(book => renderBook(book)).join('')
+  }
+
+  cartTotal.textContent = `$${calculateTotal()}`
+}
 
 /*
   Sort the `books` array by price in ascending order, then call `render()`.
 */
-function sortByPrice() {}
+function sortByPrice() {
+  books.sort((a, b) => a.price - b.price);
+}
 
 /*
   Perform all startup tasks here. Use this function to attach the required event listeners
