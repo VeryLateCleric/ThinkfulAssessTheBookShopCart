@@ -57,12 +57,24 @@ window.books = [
  Create and return the HTML to render a single book.
  The `book` parameter is an object representing a single book. 
 */
-function renderBook(book) {}
+function renderBook(book) {
+  const { title, authors, description, price, rating, quantity } = book;
+  const totalPrice = price * quantity;
+
+  return `
+  `
+}
 
 /*
   Calculate and return the total price of all items in the cart.
  */
-function calculateTotal() {}
+function calculateTotal() {
+  let total = 0;
+  for (const book of books) {
+    total += book.price * book.quantity;
+  }
+  return total.toFixed(2);
+}
 
 /*
   Render the array of books and the cart total and insert them on the DOM.
