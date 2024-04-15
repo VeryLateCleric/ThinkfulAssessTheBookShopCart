@@ -57,6 +57,7 @@ window.books = [
  Create and return the HTML to render a single book.
  The `book` parameter is an object representing a single book. 
 */
+
 function renderBook(book) {
   const { title, authors, description, price, rating, quantity } = book;
   const totalPrice = price * quantity;
@@ -110,6 +111,7 @@ function render() {
 */
 function sortByPrice() {
   books.sort((a, b) => a.price - b.price);
+  render();
 }
 
 /*
